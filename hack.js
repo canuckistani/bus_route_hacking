@@ -21,13 +21,20 @@ var test  = routes[1];
 
 var m = test.match(/Characteristics([\S\s]+?)?Productivity/g);
 
-L(m[0]);
+// L(m[0]);
 
 var lines = m[0].split("\n");
 
 L(lines.length);
 
-L(lines);
+// L(lines);
 
+var pp = function(o) { return JSON.stringify(o,null,'  ')};
 
+_.each(lines, function(line) {
+    var _fields = _.compact(line.split(/[\ ]{2}/));
 
+    if (_fields.length > 2) {
+        L(pp(_fields));
+    }
+});
